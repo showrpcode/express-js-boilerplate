@@ -1,0 +1,35 @@
+{
+  "name": "exjs-code",
+  "version": "1.0.0",
+  "description": "this project contains the express js best practice boiler plate code",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/showrpcode/express-js-boilerplate.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express"
+  ],
+  "author": "Rohan Pawar (showrpcode)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/showrpcode/express-js-boilerplate/issues"
+  },
+  "homepage": "https://github.com/showrpcode/express-js-boilerplate#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-jwt": "^8.5.1",
+    "http-status-codes": "^2.3.0",
+    "sequelize": "^6.37.7",
+    "sequelize-cli": "^6.6.3",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
