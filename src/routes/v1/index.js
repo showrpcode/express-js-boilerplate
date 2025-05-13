@@ -1,13 +1,9 @@
 const express = require('express');
+const authRoutes = require('./auth');
+const validateApiKey = require('../../middlewares/validate-api-key');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.status(200).json({
-        'success': true,
-        'message': 200,
-        'data': {},
-        'error': {}
-    });
-});
+router.use(validateApiKey);
+router.use('/auth', authRoutes);
 
 module.exports = router;
