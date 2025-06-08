@@ -1,5 +1,3 @@
-const { response } = require("../app");
-
 function getUser(req, res) {
     res.status(200).json({
         'success': true,

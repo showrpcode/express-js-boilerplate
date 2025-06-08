@@ -1,9 +1,8 @@
 const dotenv = require('dotenv');
 dotenv.config();
 
-const PORT = process.env.PORT || 3000;
-const API_KEY = process.env.API_KEY || '';
-
 module.exports = {
-    PORT, API_KEY
-}
+    host: process.env.HOST || "127.0.0.1",
+    port: process.env.PORT || 3000,
+    x_api_key: process.env.X_API_KEY || '',
+};

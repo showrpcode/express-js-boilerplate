@@ -1,9 +1,8 @@
 const { StatusCodes } = require('http-status-codes');
-const { jsonResponse } = require('../utils');
+const { jsonResponse } = require('../../utils');
 
-function AuthUser(req, res, next) {
-    const { username, password } = req.body;
-
+function loginUser(req, res, next) {
+    const { username, password } = req.body || {};
     if (!username || !password) {
         return res.status(StatusCodes.BAD_REQUEST).json(jsonResponse(false, 'username and password are required'));
     }
@@ -11,4 +10,4 @@ function AuthUser(req, res, next) {
     next(); // Proceed to the actual route handler
 }
 
-module.exports = AuthUser;
+module.exports = loginUser;

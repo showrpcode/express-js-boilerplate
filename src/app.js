@@ -1,28 +1,30 @@
 const express = require('express');
 const apiRoutes = require('./routes');
-const httpStatus = require('http-status-codes');
-const { PORT } = require('./config/constants');
+const { host, port } = require('./config/constants');
+const { notFound, errorHanlder, authRequest } = require('./middlewares');
 const app = express();
+const morgan = require('morgan');
 
-// Middleware
+// use to log http request
+// app.use(morgan('combined')); // combined or common
+// Middleware json
 app.use(express.json());
-// read url encode special char
+// Read url encode special char
 app.use(express.urlencoded({ extended: true }));
+// Middlerware Auth
+app.use(authRequest);
 // Routes
 app.use('/api', apiRoutes);
-
+// Not found
+app.use(notFound);
 // Error handler
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
-    'success': false,
-    'message': err.message,
-    'data': {},
-    'error': err.stack
-  });
-});
+app.use(errorHanlder);
 
-app.listen(PORT, () => {
-  console.log(`server run on port ${PORT}`);
+app.listen(port, host, function (error) {
+  if (error) {
+    console.error('something we ring while running server');
+  } else {
+    console.info(`server run on port ${host}:${port}`);
+  }
 });
 
