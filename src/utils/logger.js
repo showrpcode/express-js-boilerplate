@@ -1,8 +1,7 @@
 const fs = require('node:fs');
-const { dirname } = require('node:path');
 const path = require('path');
 
-const printLogOnConsole = false;
+const printLogOnConsole = true;
 const printLogOnFile = true;
 
 class Logger {
