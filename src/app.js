@@ -6,7 +6,7 @@ const app = express();
 const morgan = require('morgan');
 
 // use to log http request
-// app.use(morgan('combined')); // combined or common
+app.use(morgan('common')); // combined or common
 // Middleware json
 app.use(express.json());
 // Read url encode special char
