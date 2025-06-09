@@ -5,9 +5,13 @@ const { notFound, errorHanlder, authRequest } = require('../middlewares');
 const app = express();
 const morgan = require('morgan');
 const { default: helmet } = require('helmet');
+const cors = require('cors');
+const { corsOptions } = require('../config/cors');
 
 const appService = {
     init: async () => {
+        // cors protect route
+        app.use(cors(corsOptions));
         //  help protect your app from some well-known web vulnerabilities by setting HTTP headers appropriately
         app.use(helmet());
         // use to log http request

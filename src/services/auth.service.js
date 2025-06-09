@@ -2,9 +2,8 @@ const { db, Logger } = require('../utils');
 
 const authSevice = {
     login: async (username, password) => {
-        console.log(username, password);
         try {
-            const result = await db.select('SELECT username, password FROM users WHERE username = :uname AND password = :pass',
+            const result = await db.select('SELECT user_id, username FROM users WHERE username = :uname AND password = :pass',
                 {
                     uname: username,
                     pass: password
