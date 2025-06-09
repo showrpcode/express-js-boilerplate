@@ -1,7 +1,7 @@
 const jwtToken = require('jsonwebtoken');
 const { access_secrete_key, refresh_secrete_key } = require('../config/constants');
 
-const token = {
+const tokenService = {
     generateAccessToken: (userDetails = {}) => {
         return jwtToken.sign(userDetails, access_secrete_key, { expiresIn: '1h' });
     },
@@ -16,4 +16,4 @@ const token = {
     }
 }
 
-module.exports = token;
+module.exports = tokenService;

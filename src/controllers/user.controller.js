@@ -1,14 +1,18 @@
-function getUser(req, res) {
-    res.status(200).json({
-        'success': true,
-        'message': 'user details fetch successfully',
-        'data': {},
-        'error': {}
-    });
-}
+const userService = require('../services/user.service');
 
-async function addUser(req, res) {
-    try {
+const UserController =
+{
+    getUsers: async (req, res) => {
+        const userList = await userService.getUsers();
+        res.status(200).json({
+            'success': true,
+            'message': 'user details fetch successfully',
+            'data': userList,
+            'error': {}
+        });
+    },
+
+    addUser: async (req, res) => {
         const response = await fetch('https://dummyjson.com/products?limit=200');
         const data = await response.json();
         res.status(200).json({
@@ -17,17 +21,8 @@ async function addUser(req, res) {
             data: data,
             error: {}
         });
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: 'Failed to fetch data',
-            data: {},
-            error: error.message
-        });
+
     }
 }
 
-module.exports = {
-    getUser,
-    addUser
-}
+module.exports = UserController;
