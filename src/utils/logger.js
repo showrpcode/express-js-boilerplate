@@ -24,10 +24,10 @@ class Logger {
 
   // private method EC6 2022
   #print(date, message, error) {
-    const printableData = `\n[${date.toISOString()}] ${message}`;
+    const printableData = `\n[${date.toISOString()}] ${message} | ${JSON.stringify(error)}`;
     if (printLogOnConsole) {
       console.log(printableData);
-      if (error.length) console.error(error);
+      // if (error.length) console.error(error);
     }
     if (printLogOnFile) {
       try {

@@ -7,6 +7,12 @@ const token = {
     },
     generateRefreshToken: (userDetails = {}) => {
         return jwtToken.sign(userDetails, refresh_secrete_key, { expiresIn: '1d' });
+    },
+    verifyAccessToken: (accessToken = '') => {
+        return jwtToken.verify(accessToken, access_secrete_key);
+    },
+    verifyRefreshToken: (refreshToken = '') => {
+        return jwtToken.verify(refreshToken, refresh_secrete_key);
     }
 }
 
